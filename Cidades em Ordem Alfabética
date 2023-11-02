@@ -1,0 +1,38 @@
+CREATE TABLE PROVIDERS (
+	id NUMERIC,
+	PRIMARY KEY (id),
+	name VARCHAR (50),
+	street VARCHAR (100),
+	city VARCHAR (50),
+	state CHAR (2)
+);
+
+
+INSERT INTO PROVIDERS (id, name, street, city, state)
+VALUES (1, 'Henrique', 'Av Brasil', 'Rio de Janeiro', 'RJ');
+
+INSERT INTO PROVIDERS (id, name, street, city, state)
+VALUES (2, 'Marcelo Augusto', 'Rua Imigrantes', 'Belo Horizonte', 'MG');
+
+INSERT INTO PROVIDERS (id, name, street, city, state)
+VALUES (3, 'Caroline Silva', 'Av São Paulo', 'Salvador', 'BA');
+
+INSERT INTO PROVIDERS (id, name, street, city, state)
+VALUES (4, 'Guilherme Staff', 'Rua Central', 'Porto Alegre', 'RS');
+
+INSERT INTO PROVIDERS (id, name, street, city, state)
+VALUES (5, 'Isabela Moraes', 'Av Juiz Grande', 'Curitiba', 'PR');
+
+INSERT INTO PROVIDERS (id, name, street, city, state)
+VALUES (6, 'Francisco Accerr', 'Av Paulista', 'São Paulo', 'SP');
+
+SELECT * FROM PROVIDERS
+
+--Todos os meses a empresa pede um relatório das cidades que os fornecedores estão cadastrados. 
+--Dessa vez não vai ser diferente, faça uma consulta no Banco de Dados que retorne todas as 
+--cidades dos fornecedores, mas em ordem alfabética.
+--OBS: Você não deve mostrar cidades repetidas.
+
+SELECT DISTINCT city 
+FROM PROVIDERS
+ORDER BY city
