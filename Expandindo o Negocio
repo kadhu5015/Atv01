@@ -1,0 +1,30 @@
+CREATE TABLE LOCADOURACUSTOMERS (
+
+	id NUMERIC,
+	PRIMARY KEY (id),
+	name VARCHAR (50),
+	street VARCHAR (100),
+	city VARCHAR (50)
+
+)
+
+INSERT INTO LOCADOURACUSTOMERS (id,name,street,city)
+VALUES(1,'Giovanna Golcanves Oliveira','Rua Mato Grosso','Canoas')
+
+INSERT INTO LOCADOURACUSTOMERS (id,name,street,city)
+VALUES (2,'Kauã Azevedo Ribeiro', 'Travessa Ibiá','Uberlândia')
+
+INSERT INTO LOCADOURACUSTOMERS (id,name,street,city)
+VALUES (3,'Rebeca Barbosa Santos','Rua Observatório Meteorológico','Salvador')
+
+INSERT INTO LOCADOURACUSTOMERS (id,name,street,city)
+VALUES (4,'Sarah Carvalho Correia','Rua Antônio Carlos da Silva','Uberlândia')
+
+INSERT INTO LOCADOURACUSTOMERS (id,name,street,city)
+VALUES (5,'João Almeida Lima','Rua Rio Taiuva','Ponta Grossa')
+
+INSERT INTO LOCADOURACUSTOMERS (id,name,street,city)
+VALUES (6,'Diogo Melo Dias', 'Rua Duzentos e Cinquenta', 'Várzea Grande')
+
+SELECT DISTINCT city
+FROM LOCADOURACUSTOMERS;
