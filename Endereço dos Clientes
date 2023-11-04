@@ -1,0 +1,38 @@
+--A empresa fará um evento comemorando os 
+--20 anos de mercado, e para isso faremos uma 
+--grande comemoração na cidade de Porto Alegre. 
+--Queremos também convidar todos os nossos clientes 
+--que estão cadastrados nessa cidade.
+
+--O seu trabalho é nos passar os nomes e os 
+--endereços dos clientes que moram em 'Porto Alegre', 
+--para entregar os convites pessoalmente.
+
+CREATE TABLE CUSTOMERS (
+	
+	id NUMERIC,
+	PRIMARY KEY (id),
+	name VARCHAR (50),
+	street VARCHAR (100),
+	city VARCHAR (50),
+	state CHAR(2),
+	credit_limit NUMERIC
+
+);
+
+INSERT INTO CUSTOMERS (id, name, street, city, state, credit_limit)
+VALUES (1, 'Pedro Augusto da Rocha', 'Rua Pedro Carlos Hoffman', 'Porto Alegre', 'RS', 700);
+
+INSERT INTO CUSTOMERS (id, name, street, city, state, credit_limit)
+VALUES (2,'Antonio Carlos Mamel','Av. Pinheiros','Belo Horizonte','MG',3500.5)
+
+INSERT INTO CUSTOMERS (id,name,street,city,state,credit_limit)
+VALUES (3,'Luiza Augusta Mhor','Rua Salto Grande', 'Niteroi', 'RJ',4000)
+
+INSERT INTO CUSTOMERS (id,name,street,city,state, credit_limit)
+VALUES(4,'Jane Ester','Av 7 de setembro','Erechim','RS',800)
+
+INSERT INTO CUSTOMERS (id,name,street,city,state,credit_limit)
+VALUES (5,'Marcos Antônio dos Santos','Av Farrapos','Porto Alegre', 'RS', 4250.25)
+
+SELECT name, street FROM CUSTOMERS WHERE city LIKE 'Porto Alegre'
