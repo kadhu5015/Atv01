@@ -1,0 +1,66 @@
+CREATE TABLE FORNECEDORES (
+
+	id NUMERIC,
+	PRIMARY KEY (id),
+	name CHARACTER VARYING (255),
+	street CHARACTER VARYING (255),
+	city CHARACTER VARYING (255),
+	state CHAR (2)
+
+);
+
+CREATE TABLE PRODUCTS (
+
+	id NUMERIC,
+	PRIMARY KEY (id),
+	name CHARACTER VARYING (255),
+	amount NUMERIC,
+	price NUMERIC,
+	id_fornecedores NUMERIC,
+	FOREIGN KEY (id_fornecedores) REFERENCES FORNECEDORES (id)
+
+);
+
+--Fornecedores
+
+INSERT INTO FORNECEDORES (id, name, street, city, state)
+VALUES (1, 'Ajax SA', 'Presidente Castelo Branco','Porto Alegre', 'RS')
+
+INSERT INTO FORNECEDORES (id, name, street, city, state)
+VALUES (2,'Sansul SA','Av Brasil', 'Rio de Janeiro', 'RJ')
+
+INSERT INTO FORNECEDORES (id, name, street, city, state)
+VALUES (3,'South Chairs', 'Ave Moinho', 'Santa Maria', 'RS')
+
+INSERT INTO FORNECEDORES (id, name, street, city, state)
+VALUES (4,'Elon Electro', 'Apolo','São Paulo','SP')
+
+INSERT INTO FORNECEDORES (id, name, street, city, state)
+VALUES (5,'Mike Electro','Pedra da Cunha','Curitiba','PR')
+
+--Produtos
+INSERT INTO PRODUCTS (id, name, amount, price, id_fornecedores)
+VALUES (1,'Blue Chair',30,300,5)
+
+INSERT INTO PRODUCTS (id, name, amount, price, id_fornecedores)
+VALUES (2,'Red Chair',50,2150,1)
+
+INSERT INTO PRODUCTS (id, name, amount, price, id_fornecedores)
+VALUES (3,'Disney Wardrobe',400, 829.5,4)
+
+INSERT INTO PRODUCTS (id, name, amount, price, id_fornecedores)
+VALUES (4,'Blue Toaster', 20,9.9,3)
+
+INSERT INTO PRODUCTS (id, name, amount, price, id_fornecedores)
+VALUES(7,'Zaga',60,30,1)
+
+INSERT INTO PRODUCTS (id, name, amount, price, id_fornecedores)
+VALUES(6,'Bufu',50,300,4)
+
+INSERT INTO PRODUCTS (id, name, amount, price, id_fornecedores)
+
+SELECT p.name
+FROM PRODUCTS p
+INNER JOIN FORNECEDORES f ON p.id_fornecedores = f.id
+WHERE f.name = 'Ajax SA';
+
