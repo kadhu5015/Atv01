@@ -1,0 +1,43 @@
+/*Os vírus estão evoluindo, porém uma 
+nova pesquisa tem provado que trocando
+algumas proteínas a vacina se torna imbatível. 
+A proteína H1 (Hemaglutinina) quando é 
+substituída pela proteína X (Xenomorphina) 
+tem efeitos interessantes no combate de quase 
+todas as doenças virais. Alguns conspiracionistas
+dizem que após a descoberta dessa vacina algumas 
+criaturas de 3 metros de altura foram vistas perto 
+do laboratório, mas claro, isso é mentira.
+
+Portanto você deve substituir todo caractere 
+'H1' ( Hemaglutinina ) por 'X' ( Xenomorphina ).
+*/
+CREATE TABLE VIRUS (
+
+	id INTEGER,
+	PRIMARY KEY (id),
+	name VARCHAR (50)
+
+);
+
+INSERT INTO VIRUS (id,name)
+VALUES (1,'H1RT')
+
+INSERT INTO VIRUS (id, name)
+VALUES (2, 'H7H1')
+
+INSERT INTO VIRUS (id, name)
+VALUES (3,'HUN8')
+
+INSERT INTO VIRUS (id, name)
+VALUES (4,'XH1HX')
+
+INSERT INTO VIRUS (id, name)
+VALUES (5, 'XXXX')
+
+SELECT * FROM VIRUS
+
+UPDATE VIRUS
+SET name = REPLACE(name, 'H1','x')
+WHERE name LIKE '%H1%';
+
