@@ -1,0 +1,57 @@
+/*O setor de vendas quer fazer uma
+promoção para todos os clientes que são pessoas 
+jurídicas. Para isso você deve exibir o nome dos clientes 
+que sejam pessoa jurídica.*/
+
+CREATE TABLE PESSOAS (
+
+	id NUMERIC PRIMARY KEY,
+	name CHARACTER VARYING (255),
+	street CHARACTER VARYING (255),
+	city CHARACTER VARYING (255),
+	state CHAR (2),
+	credit_limit NUMERIC
+
+);
+
+
+CREATE TABLE LEGAL_PERSON (
+    id_customers NUMERIC,
+    cnpj CHAR(18),
+    contact VARCHAR(255), -- Defina um tamanho apropriado para a coluna de contato
+    FOREIGN KEY (id_customers) REFERENCES PESSOAS(id)
+);
+
+
+INSERT INTO PESSOAS (id, name, street, city, state, credit_limit)
+VALUES (1, 'Nicolas Diogo Cardoso', 'Acesso Um', 'Porto Alegre', 'RS', 475)
+
+INSERT INTO PESSOAS (id, name, street, city, state, credit_limit)
+VALUES (2, 'Cecília Olivia Rodrigues', 'Rua Sizuka Usuy', 'Cianorte','PR', 3170)
+
+INSERT INTO PESSOAS (id, name, street, city, state, credit_limit)
+VALUES (3,'Augusto Fernando Carlos Eduardo Cardoso', 'Rua Baldomiro Koerich', 'Palhoça', 'SC',1067)
+
+INSERT INTO PESSOAS (id, name, street, city, state, credit_limit)
+VALUES (4,'Nicolas Diogo Cardoso','Acesso Um','Porto Alegre', 'RS', 4312)
+
+INSERT INTO PESSOAS (id, name, street, city, state, credit_limit)
+VALUES (5,'Sabrina Heloisa Gabriela Barros', 'Rua Engenheiro Tito Marques Fernandes', 'Porto Alegre','RS', 4314)
+
+INSERT INTO PESSOAS (id, name, street, city, state, credit_limit)
+VALUES (6,'Joaquim Diego Lorenzo Araújo', 'Rua Vitorino', 'Novo Hamburgo', 'RS',2314)
+
+SELECT * FROM PESSOAS
+
+INSERT INTO LEGAL_PERSON (id_customers, cnpj, contact)
+VALUES(4,85883842000181,997670562)
+
+INSERT INTO LEGAL_PERSON (id_customers, cnpj, contact)
+VALUES(5,47773848000117,991008965)
+
+SELECT * FROM LEGAL_PERSON
+
+SELECT p.name
+FROM LEGAL_PERSON lp
+JOIN PESSOAS p ON lp.id_customers=p.id
+
