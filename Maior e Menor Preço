@@ -1,0 +1,38 @@
+/*O setor financeiro da nossa empresa, 
+está querendo saber os menores e maiores 
+valores dos produtos, que vendemos.
+
+Para isso exiba somente o maior e o menor 
+preço da tabela produtos.*/
+
+CREATE TABLE PRODUTOS(
+
+	id NUMERIC,
+	PRIMARY KEY (id),
+	name VARCHAR (255),
+	amount NUMERIC,
+	PRICE NUMERIC
+
+);
+
+INSERT INTO PRODUTOS (id, name, amount, price)
+VALUES (1,'Two-doors wardrobe',100,800)
+
+INSERT INTO PRODUTOS (id, name, amount, price)
+VALUES (2,'Dining Table',1000,560)
+
+INSERT INTO PRODUTOS (id, name, amount, price)
+VALUES (3,'Towel holder',10000,25.5)
+
+INSERT INTO PRODUTOS (id, name, amount, price)
+VALUES (4,'Computer Desk',350,120.64)
+
+INSERT INTO PRODUTOS (id, name, amount, price)
+VALUES (5,'Chair', 3000,210.64)
+
+INSERT INTO PRODUTOS (id, name, amount, price)
+VALUES (6,'Single bed',750,460)
+
+SELECT MIN(price) AS menor_preco, MAX(price) AS maior_preco
+FROM PRODUTOS;
+
