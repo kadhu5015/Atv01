@@ -75,6 +75,26 @@ VALUES (5,'Mike Electro','Rua Pedro da Cunha','Curitiba','PR')
 
 SELECT * FROM PROVIDERSQ13
 
+INSERT INTO PRODUCTSQ13(id,name,amount, price, id_providers,id_categories)
+VALUES (1,'Blue Chair',30,300,5,5)
+
+INSERT INTO PRODUCTSQ13(id,name,amount, price, id_providers,id_categories)
+VALUES(2,'Red chair',50, 2150,2,1)
+
+INSERT INTO PRODUCTSQ13(id,name,amount, price, id_providers,id_categories)
+VALUES(3,'Disney Wardrobe',400,829.5,4,1)
+
+INSERT INTO PRODUCTSQ13(id,name,amount, price, id_providers,id_categories)
+VALUES (4,'Blue Toaster',20,9.9,3,1)
+
+INSERT INTO PRODUCTSQ13(id,name,amount, price, id_providers,id_categories)
+VALUES(5,'TV',30,3000.25,2,2)
+
+SELECT p.name, f.name, c.name FROM PRODUCTSQ13 P
+JOIN PROVIDERSQ13 f ON p.id_providers=f.id
+JOIN CATEGORIESQ13 c ON c.id = p.id_categories
+WHERE f.name = 'Sansul SA' AND c.name = 'Imported'
+
 SELECT P.name FROM PRODUCTSQ13 P
 JOIN F.name, C.name ON PROVIDERSQ13 F, CATEGORIESQ13 C
 WHERE 
