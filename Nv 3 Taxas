@@ -1,0 +1,32 @@
+CREATE TABLE PEOPLEQ17(
+	id INTEGER,
+	PRIMARY KEY (id),
+	name VARCHAR (255),
+	salary NUMERIC
+
+);
+
+INSERT INTO PEOPLEQ17(id, name,salary)
+VALUES (1,'James M. Tabarez', 883)
+
+INSERT INTO PEOPLEQ17(id, name,salary)
+VALUES (2,'Rafael T. Hendon', 4281)
+
+INSERT INTO PEOPLEQ17(id, name,salary)
+VALUES (3,'Lina J, Gardner', 4437)
+
+INSERT INTO PEOPLEQ17(id, name,salary)
+VALUES (4,'Nicholas j. Conn', 8011)
+
+INSERT INTO PEOPLEQ17(id, name,salary)
+VALUES (5,'Karol A. Morales', 2508)
+
+INSERT INTO PEOPLEQ17(id, name,salary)
+VALUES (6,'Lolita S. Graves', 8709)
+
+SELECT * FROM PEOPLEQ17
+
+SELECT p.name, p.salary*0.1 AS tax FROM PEOPLEQ17 p
+WHERE p.salary > 3000
+
+
