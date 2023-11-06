@@ -1,0 +1,80 @@
+/*
+
+O setor de importação da nossa empresa precisa de um relatório sobre a importação de produtos do nosso fornecedor Sansul.
+
+Sua tarefa é exibir o nome dos produtos, o nome do fornecedor e o nome da categoria, para os produtos fornecidos pelo fornecedor ‘Sansul SA’ e cujo nome da categoria seja 'Imported'.
+*/
+
+CREATE TABLE CATEGORIESQ13 (
+
+	id NUMERIC,
+	PRIMARY KEY (id),
+	name CHARACTER VARYING (255)
+
+);
+
+CREATE TABLE PROVIDERSQ13(
+
+	id NUMERIC,
+	PRIMARY KEY (id),
+	name CHARACTER VARYING (255),
+	street CHARACTER VARYING (255),
+	city CHARACTER VARYING (255),
+	state CHAR (2)
+
+);
+
+CREATE TABLE PRODUCTSQ13(
+	
+	id NUMERIC,
+	PRIMARY KEY (id),
+	name CHARACTER VARYING (255),
+	amount NUMERIC,
+	price NUMERIC,
+	id_providers NUMERIC,
+	FOREIGN KEY (id_providers) REFERENCES PROVIDERSQ13 (id),
+	id_categories NUMERIC,
+	FOREIGN KEY (id_categories) REFERENCES CATEGORIESQ13 (id)
+
+);
+
+
+INSERT INTO CATEGORIESQ13 (id,name)
+VALUES (1,'Super Luxury')
+
+INSERT INTO CATEGORIESQ13 (id,name)
+VALUES (2,'Imported')
+
+INSERT INTO CATEGORIESQ13 (id,name)
+VALUES (3,'Tech')
+
+INSERT INTO CATEGORIESQ13 (id,name)
+VALUES (4,'Vintage')
+
+INSERT INTO CATEGORIESQ13 (id,name)
+VALUES (5,'Supeme')
+
+INSERT INTO PROVIDERSQ13 (id,name,street,city,state)
+VALUES (1,'Ajax SA','Rua Presidente Castelo Branco','Porto Alegre','RS')
+
+
+INSERT INTO PROVIDERSQ13 (id,name,street,city,state)
+VALUES (2,'Sansul SA','Av Brasil','Rio de Janeiro','RJ')
+
+
+INSERT INTO PROVIDERSQ13 (id,name,street,city,state)
+VALUES (3,'South Chairs','Rua do Moinho','Porto Alegre','RS')
+
+
+INSERT INTO PROVIDERSQ13 (id,name,street,city,state)
+VALUES (4,'Elon Electro','Rua Apolo','São Paulo','SP')
+
+
+INSERT INTO PROVIDERSQ13 (id,name,street,city,state)
+VALUES (5,'Mike Electro','Rua Pedro da Cunha','Curitiba','PR')
+
+SELECT * FROM PROVIDERSQ13
+
+SELECT P.name FROM PRODUCTSQ13 P
+JOIN F.name, C.name ON PROVIDERSQ13 F, CATEGORIESQ13 C
+WHERE 
