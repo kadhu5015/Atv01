@@ -1,0 +1,97 @@
+-- Já tenho o providers de atividades anteriores
+/*A nossa empresa está querendo fazer um novo contrato para o fornecimento de novos produtos superluxuosos, e para isso precisamos de alguns dados dos nossos produtos.
+
+Seu trabalho é exibir o nome dos produtos, nome dos fornecedores e o preço, para os produtos cujo preço seja maior que 1000 e sua categoria seja ‘Super Luxury.*/
+
+CREATE TABLE CATEGORIES(
+
+	id NUMERIC,
+	PRIMARY KEY (id),
+	name CHARACTER VARYING (255)
+
+);
+
+INSERT INTO CATEGORIES (id, name)
+VALUES (1,'Super Luxury')
+
+INSERT INTO CATEGORIES (id, name)
+VALUES (2,'Imported')
+
+INSERT INTO CATEGORIES (id, name)
+VALUES (3,'Tech')
+
+INSERT INTO CATEGORIES (id, name)
+VALUES (4,'Vintage')
+
+INSERT INTO CATEGORIES (id, name)
+VALUES (5,'Supreme')
+
+SELECT * FROM CATEGORIES
+
+SELECT * FROM PROVIDERS
+SELECT * FROM PRODUCTSV2
+DELETE FROM PROVIDERS
+
+INSERT INTO PROVIDERS (id,name,street,city,state)
+VALUES (1,'Ajax SA','Rua Presidente Castelo Branco','Porto Alegre','RS')
+
+INSERT INTO PROVIDERS (id,name,street,city,state)
+VALUES (2,'Sansul SA','Av Brasil', 'Rio de Janeiro','RJ')
+
+INSERT INTO PROVIDERS (id,name,street,city,state)
+VALUES (3,'South Chairs','Rua do Moinho','Santa Maria','RS')
+
+INSERT INTO PROVIDERS (id,name,street,city,state)
+VALUES (4,'Elon Electro','Rua Apolo','São Paulo','SP')
+
+INSERT INTO PROVIDERS (id,name,street,city,state)
+VALUES (5, 'Mike electro','Rua Pedro da Cunha','Curitiba','PR')
+
+SELECT * FROM PROVIDERS
+
+
+CREATE TABLE PRODUCTSV2(
+
+	id NUMERIC,
+	PRIMARY KEY (id),
+	name CHARACTER VARYING (255),
+	amount NUMERIC,
+	price NUMERIC,
+	id_providers NUMERIC,
+	FOREIGN KEY (id_providers) REFERENCES PROVIDERS (id),
+	id_categories NUMERIC,
+	FOREIGN KEY (id_categories) REFERENCES CATEGORIES(id)
+
+);
+
+INSERT INTO PRODUCTSV2 (id,name,amount,price,id_providers,id_categories)
+VALUES (1,'Blue Chair', 30, 300, 5,5)
+
+INSERT INTO PRODUCTSV2 (id,name,amount,price,id_providers,id_categories)
+VALUES (2,'Red chair',50,2150,2,1)
+
+INSERT INTO PRODUCTSV2 (id,name,amount,price,id_providers,id_categories)
+VALUES (3,'Disney Wardrobe',400, 829.5,4,1)
+
+INSERT INTO PRODUCTSV2 (id,name,amount,price,id_providers,id_categories)
+VALUES (4,'Blue Toaster',20,9.9,3,1)
+
+INSERT INTO PRODUCTSV2 (id,name,amount,price,id_providers,id_categories)
+VALUES (5,'TV',30,3000.25,2,2)
+
+SELECT * FROM PRODUCTSV2
+
+
+
+/*
+SELECT p.name, f.id_providers,pc.price FROM PRODUCTSV2
+WHERE pc > 1000 AND 
+*/
+
+
+SELECT P.name AS nome_produto, PR.name AS nome_fornecedor, P.price
+FROM PRODUCTSV2 P
+JOIN PROVIDERS PR ON P.id_providers = PR.id
+JOIN CATEGORIES C ON P.id_categories = C.id
+WHERE P.price > 1000 AND C.name = 'Super Luxury';
+
