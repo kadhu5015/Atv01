@@ -1,0 +1,58 @@
+CREATE TABLE PROVIDERSQ14 (
+	
+	id NUMERIC,
+	PRIMARY KEY (id),
+	name CHARACTER VARYING (255),
+	street CHARACTER VARYING (255),
+	city CHARACTER VARYING (255),
+	state CHAR(2)
+
+);
+
+CREATE TABLE PRODUCTSQ14(
+
+	id NUMERIC,
+	PRIMARY KEY (id),
+	name CHARACTER VARYING (255),
+	amount NUMERIC,
+	price NUMERIC,
+	id_providers NUMERIC,
+	FOREIGN KEY (id_providers) REFERENCES PROVIDERSQ14 (id)
+	
+);
+
+INSERT INTO PROVIDERSQ14 (id,name,street,city,state)
+VALUES (1,'Ajax SA','Rua Presidente Castelo Branco', 'Porto Alegre','RS')
+
+INSERT INTO PROVIDERSQ14 (id,name,street,city,state)
+VALUES (2,'Sansul SA', 'Av Brasil', 'Rio de Janeiro', 'RJ')
+
+INSERT INTO PROVIDERSQ14 (id,name,street,city,state)
+VALUES (3,'Pr Sheppard Chairs','Rua do Moinho','Santa Maria', 'RS')
+
+INSERT INTO PROVIDERSQ14 (id,name,street,city,state)
+VALUES (4,'Elon Electro', 'Rua Apolo','São Paulo','SP')
+
+INSERT INTO PROVIDERSQ14 (id,name,street,city,state)
+VALUES (5,'Mike Electro', 'Rua Pedro da Cunha','Curitiba','PR')
+
+
+INSERT INTO PRODUCTSQ14 (id,name,amount, price, id_providers)
+VALUES (1,'Blue Chair',30,300,5)
+
+INSERT INTO PRODUCTSQ14 (id,name,amount, price, id_providers)
+VALUES (2,'Red chair',50,2150,2)
+
+INSERT INTO PRODUCTSQ14 (id,name,amount, price, id_providers)
+VALUES (3,'Disney Wardrobe',400,828.5,4)
+
+INSERT INTO PRODUCTSQ14 (id,name,amount, price, id_providers)
+VALUES (4,'Executive chair',17,9.9,3)
+
+INSERT INTO PRODUCTSQ14 (id,name,amount, price, id_providers)
+VALUES (5,'Solar Panel',30,3000.25,4)
+
+SELECT p.name FROM PRODUCTSQ14 p
+JOIN PROVIDERSQ14 f ON f.id=p.id_providers
+WHERE p.amount > 9 AND p.amount < 21 
+AND f.name LIKE 'P%'
