@@ -1,0 +1,71 @@
+/*
+A auditoria financeira da empresa está pedindo para nós um relatório do primeiro semestre de 2016. Então exiba o nome dos clientes e o número do pedido para os clientes que fizeram pedidos no primeiro semestre de 2016.
+
+*/
+
+CREATE TABLE CUSTOMERSSQ18(
+	
+	id NUMERIC,
+	PRIMARY KEY (id),
+	name CHARACTER VARYING (255),
+	street CHARACTER VARYING (255),
+	city CHARACTER VARYING (255),
+	state CHAR (2),
+	credit_limit NUMERIC
+
+);
+
+CREATE TABLE ORDERS (
+
+	id NUMERIC,
+	PRIMARY KEY (id),
+	orders_date DATE,
+	id_customers NUMERIC,
+	FOREIGN KEY (id_customers) REFERENCES CUSTOMERSSQ18
+	
+);
+
+INSERT INTO CUSTOMERSSQ18 (id,name,street,city,state,credit_limit)
+VALUES (1,'Nicolas Diogo Cardoso','Acesso Um', 'Porto Alegre', 'RS', 475)
+
+INSERT INTO CUSTOMERSSQ18 (id,name,street,city,state,credit_limit)
+VALUES (2,'Cecília Olivia Rodrigues','Rua Sizuka Usuy','Cianorte','PR',3170)
+
+INSERT INTO CUSTOMERSSQ18 (id,name,street,city,state,credit_limit)
+VALUES (3,'Augusto Fernando Carlos Eduardo Cardoso', 'Rua Baldomiro Koerich', 'Palhoça','SC',1067)
+
+INSERT INTO CUSTOMERSSQ18 (id,name,street,city,state,credit_limit)
+VALUES (4,'Nicolas Diogo Cardoso','Acesso Um', 'Porto Alegre','RS',475)
+
+INSERT INTO CUSTOMERSSQ18 (id,name,street,city,state,credit_limit)
+VALUES (5,'Sabrina Heloisa Gabriela Barros','Rua Engenheiro Tito Marques Fernandes','Porto Alegre','RS',4312)
+
+INSERT INTO CUSTOMERSSQ18 (id,name,street,city,state,credit_limit)
+VALUES (6,'Joaquim Diego Lorenzo Araújo','Rua Vitorino','Novo hamburgo','RS',2314)
+
+INSERT INTO ORDERS (id, orders_date,id_customers)
+VALUES (1,'2016-05-13',3)
+
+INSERT INTO ORDERS (id, orders_date,id_customers)
+VALUES (2,'2016-01-12',2)
+
+INSERT INTO ORDERS (id, orders_date,id_customers)
+VALUES (3,'2016-04-18',5)
+
+INSERT INTO ORDERS (id, orders_date,id_customers)
+VALUES (4,'2016-09-07',4)
+
+INSERT INTO ORDERS (id, orders_date,id_customers)
+VALUES (5,'2016-02-13',6)
+
+INSERT INTO ORDERS (id, orders_date,id_customers)
+VALUES (6,'2016-08-05',3)
+
+SELECT * FROM CUSTOMERSSQ18
+
+SELECT p.name, o.id FROM CUSTOMERSSQ18 p
+JOIN ORDERS o ON o.id_customers = p.id
+WHERE o.orders_date BETWEEN '2016-01-01' AND '2016-06-30'
+
+
+
