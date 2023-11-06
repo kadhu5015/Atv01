@@ -1,0 +1,30 @@
+CREATE TABLE PRODUCTSQ12(
+
+	id NUMERIC,
+	PRIMARY KEY (id),
+	name VARCHAR(50),
+	amount NUMERIC,
+	price NUMERIC
+
+);
+
+INSERT INTO PRODUCTSQ12 (id,name,amount,price)
+VALUES (1,'Two-doors wardrobe',100,800)
+
+INSERT INTO PRODUCTSQ12 (id,name,amount,price)
+VALUES (2,'Dining table',1000,560)
+
+INSERT INTO PRODUCTSQ12 (id,name,amount,price)
+VALUES (3,'Towel holder',10000,25.5)
+
+INSERT INTO PRODUCTSQ12 (id,name,amount,price)
+VALUES (4,'Computer desk',350,320.5)
+
+INSERT INTO PRODUCTSQ12 (id,name,amount,price)
+VALUES (5,'Chair',3000,210.64)
+
+INSERT INTO PRODUCTSQ12 (id,name,amount,price)
+VALUES (6,'Single bed',750,460)
+
+SELECT AVG(price) FROM PRODUCTSQ12
+
