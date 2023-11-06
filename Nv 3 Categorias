@@ -1,0 +1,90 @@
+/*
+Quando os dados foram migrados de 
+Banco de Dados, houve um pequeno 
+mal-entendido por parte do antigo DBA.
+
+Seu chefe precisa que você exiba o 
+código e o nome dos produtos, cuja categoria 
+inicie com 'super'.
+
+*/
+
+CREATE TABLE PRODUCTSV4 (
+
+	id NUMERIC,
+	PRIMARY KEY (id),
+	name VARCHAR (50),
+	amount NUMERIC,
+	price NUMERIC,
+	id_categories NUMERIC,
+	FOREIGN KEY (id_categories) REFERENCES CATEGORIESV2 (id)
+
+
+);
+
+CREATE TABLE CATEGORIESV2 (
+	id NUMERIC,
+	PRIMARY KEY (id),
+	name VARCHAR (50)
+
+);
+
+INSERT INTO CATEGORIESV2 (id, name)
+VALUES (1,'old stock')
+
+INSERT INTO CATEGORIESV2 (id, name)
+VALUES (2,'new stock')
+
+INSERT INTO CATEGORIESV2 (id, name)
+VALUES (3,'modern')
+
+INSERT INTO CATEGORIESV2 (id, name)
+VALUES (4,'commercial')
+
+INSERT INTO CATEGORIESV2 (id, name)
+VALUES (5,'recyclable')
+
+INSERT INTO CATEGORIESV2 (id, name)
+VALUES (6,'executive')
+
+INSERT INTO CATEGORIESV2 (id, name)
+VALUES (7,'superior')
+
+INSERT INTO CATEGORIESV2 (id, name)
+VALUES (8,'wood')
+
+INSERT INTO CATEGORIESV2 (id, name)
+VALUES (9,'super luxury')
+
+INSERT INTO CATEGORIESV2 (id, name)
+VALUES (10,'vintage')
+
+SELECT * FROM CATEGORIESV2
+
+INSERT INTO PRODUCTSV4 (id, name,amount,price,id_categories)
+VALUES (1,'Lampshade',100,800,4)
+
+INSERT INTO PRODUCTSV4 (id, name,amount,price,id_categories)
+VALUES (2,'Table for paiting',1000,560,9)
+
+INSERT INTO PRODUCTSV4 (id, name,amount,price,id_categories)
+VALUES (3,'Notebook desk',10000,25.50,9)
+
+INSERT INTO PRODUCTSV4 (id, name,amount,price,id_categories)
+VALUES (4,'Computer desk',350,320.5,6)
+
+INSERT INTO PRODUCTSV4 (id, name,amount,price,id_categories)
+VALUES (5,'Chair',3000,210.64,9)
+
+INSERT INTO PRODUCTSV4 (id, name,amount,price,id_categories)
+VALUES (6,'Home alarm',750,460,4)
+
+SELECT * FROM PRODUCTSV4
+
+-- exiba o 
+--código e o nome dos produtos, cuja categoria 
+--inicie com 'super'.
+
+SELECT PV4.id, PV4.name FROM PRODUCTSV4 PV4
+JOIN CATEGORIESV2 CV2 ON PV4.id_categories = CV2.id
+WHERE CV2.name LIKE 'super%';
