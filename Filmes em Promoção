@@ -1,0 +1,63 @@
+CREATE TABLE PRICES(
+	
+	id NUMERIC,
+	PRIMARY KEY(id),
+	categorie VARCHAR (50),
+	value NUMERIC
+
+);
+
+CREATE TABLE MOVIES (
+	
+	id NUMERIC,
+	PRIMARY KEY (id),
+	name VARCHAR (50),
+	id_prices NUMERIC,
+	FOREIGN KEY (id_prices) REFERENCES PRICES (id)
+	
+
+);
+
+INSERT INTO PRICES (id, categorie,value)
+VALUES(1,'Releases',3.5)
+
+INSERT INTO PRICES (id, categorie,value)
+VALUES (2,'Bronze Seal',2)
+
+INSERT INTO PRICES (id, categorie,value)
+VALUES (3,'Silver Seal',2.5)
+
+INSERT INTO PRICES (id, categorie,value)
+VALUES (4,'Gold Seal',3)
+
+INSERT INTO PRICES (id, categorie,value)
+VALUES (8,'teste',1)
+
+INSERT INTO PRICES (id, categorie,value)
+VALUES (5,'Promotion',1.5)
+
+SELECT * FROM PRICES
+
+INSERT INTO MOVIES (id, name,id_prices)
+VALUES (1,'Batman',3)
+
+INSERT INTO MOVIES (id, name,id_prices)
+VALUES (2,'The Battle of the Dark River',3)
+
+INSERT INTO MOVIES (id, name,id_prices)
+VALUES (3,'White Duck',5)
+
+INSERT INTO MOVIES (id, name,id_prices)
+VALUES (8,'Sobre o teste',8)
+
+INSERT INTO MOVIES (id, name,id_prices)
+VALUES (4,'Breaking Barriers', 4)
+
+INSERT INTO MOVIES (id, name,id_prices)
+VALUES (5,'The Two Hours',2)
+
+SELECT M.id, M.name
+FROM MOVIES M
+JOIN PRICES P ON M.id_prices = P.id
+WHERE P.value < 2.00;
+
