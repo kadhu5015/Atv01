@@ -1,0 +1,100 @@
+/*
+A Universidade Tecnológica de Marte está com seu concurso aberto para Pesquisadores. Porém o computador que processava os dados dos candidatos estragou. Você deve mostrar a lista dos candidatos, contendo o nome do candidato e a sua pontuação final (com duas casas decimais após a vírgula). Lembre-se de mostrar a lista ordenada pela pontuação do candidato (maior pontuação no topo da lista).
+
+A pontuação do candidato é o resultado da média ponderada descrita abaixo:
+
+AVG = ((math*2)+ (specific*3)+(project_plan*5))/10
+*/
+
+CREATE TABLE CANDIDATE (
+	
+	id INTEGER,
+	PRIMARY KEY (id),
+	name VARCHAR (255)
+
+);
+
+CREATE TABLE SCORE (
+
+	candidate_id INTEGER,
+	FOREIGN KEY (candidate_id) REFERENCES CANDIDATE (id),
+	math NUMERIC,
+	specific NUMERIC,
+	project_plan NUMERIC
+
+);
+
+INSERT INTO CANDIDATE (id, name)
+VALUES (1,'michael p cannon')
+
+INSERT INTO CANDIDATE (id, name)
+VALUES (2,'baebara j cable')
+
+INSERT INTO CANDIDATE (id, name)
+VALUES (3,'ronald d jones')
+
+INSERT INTO CANDIDATE (id, name)
+VALUES (4,'timothy k fitzsimmons')
+
+INSERT INTO CANDIDATE (id, name)
+VALUES (5,'ivory b morrison')
+
+INSERT INTO CANDIDATE (id, name)
+VALUES (6,'sheila r denis')
+
+INSERT INTO CANDIDATE (id, name)
+VALUES (7,'edward c durgan')
+
+INSERT INTO CANDIDATE (id, name)
+VALUES (8,'william k spencer')
+
+INSERT INTO CANDIDATE (id, name)
+VALUES (9,'donna d pursley')
+
+INSERT INTO CANDIDATE (id, name)
+VALUES (10,'ann c davis')
+
+INSERT INTO SCORE (candidate_id, math, specific, project_plan)
+VALUES (1,76,58,21)
+
+INSERT INTO SCORE (candidate_id, math, specific, project_plan)
+VALUES (2,4,5,22)
+
+INSERT INTO SCORE (candidate_id, math, specific, project_plan)
+VALUES (3,15,59,12)
+
+INSERT INTO SCORE (candidate_id, math, specific, project_plan)
+VALUES (4,41,42,99)
+
+INSERT INTO SCORE (candidate_id, math, specific, project_plan)
+VALUES (5,22,90,9)
+
+INSERT INTO SCORE (candidate_id, math, specific, project_plan)
+VALUES (6,82,77,15)
+
+INSERT INTO SCORE (candidate_id, math, specific, project_plan)
+VALUES (7,82,99,56)
+
+INSERT INTO SCORE (candidate_id, math, specific, project_plan)
+VALUES (8,11,4,22)
+
+INSERT INTO SCORE (candidate_id, math, specific, project_plan)
+VALUES (9,16,29,94)
+
+INSERT INTO SCORE (candidate_id, math, specific, project_plan)
+VALUES (10,1,7,59)
+
+SELECT
+    C.name AS "Nome do Candidato",
+    ROUND(((S.math * 2) + (S.specific * 3) + (S.project_plan * 5)) / 10, 2) AS "Pontuação Final"
+FROM CANDIDATE C
+INNER JOIN SCORE S ON C.id = S.candidate_id
+ORDER BY "Pontuação Final" DESC;
+
+
+
+
+
+
+
+
