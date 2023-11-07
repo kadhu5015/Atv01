@@ -1,0 +1,30 @@
+CREATE TABLE STUDENTS (
+	
+	id INTEGER,
+	PRIMARY KEY (id),
+	name VARCHAR,
+	grade NUMERIC
+
+);
+
+INSERT INTO STUDENTS (id, name, grade)
+VALUES (1,'terry b. padilla',7.3)
+
+INSERT INTO STUDENTS (id, name, grade)
+VALUES (2,'william s ray',0.6)
+
+INSERT INTO STUDENTS (id, name, grade)
+VALUES (3,'barbara A gongora',5.2)
+
+INSERT INTO STUDENTS (id, name, grade)
+VALUES (4,'julie b manzer',6.7)
+
+INSERT INTO STUDENTS (id, name, grade)
+VALUES (5,'teresa j axtell',4.6)
+
+INSERT INTO STUDENTS (id, name, grade)
+VALUES (6,'ben m dantzler',9.6)
+
+SELECT 'Approved:' || s.name, s.grade  FROM STUDENTS S
+WHERE s.grade >= 7
+ORDER BY s.grade DESC
