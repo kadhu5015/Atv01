@@ -1,0 +1,69 @@
+/*
+A Liga Internacional de Escavação Subterrânea já é um sucesso entre os esportes alternativos, porém todos que trabalham na organização do evento trabalham com escavação e não computação. Então você foi contratado para solucionar o problema da Liga.
+
+Selecione os três primeiros colocados da lista com a frase inicial Podium: e também, os dois últimos times que serão rebaixados para série B com a frase inicial Demoted:
+
+*/
+
+CREATE TABLE LEAGUE(
+	
+	position INTEGER,
+	PRIMARY KEY (position),
+	team VARCHAR(255)
+
+);
+
+INSERT INTO LEAGUE (position,team)
+VALUES (1,'the quack bats')
+
+INSERT INTO LEAGUE (position,team)
+VALUES (2,'the responsible hornets')
+
+INSERT INTO LEAGUE (position,team)
+VALUES (3,'the bawdy dolphins')
+
+INSERT INTO LEAGUE (position,team)
+VALUES (4,'the abstracted sharks')
+
+INSERT INTO LEAGUE (position,team)
+VALUES (5,'the nervous zebras')
+
+INSERT INTO LEAGUE (position,team)
+VALUES (6,'the oafish owls')
+
+INSERT INTO LEAGUE (position,team)
+VALUES (7,'the unequaled bison')
+
+INSERT INTO LEAGUE (position,team)
+VALUES (8,'the keen kangaroos')
+
+INSERT INTO LEAGUE (position,team)
+VALUES (9,'the left nightingales')
+
+INSERT INTO LEAGUE (position,team)
+VALUES (10,'the terrific elks')
+
+INSERT INTO LEAGUE (position,team)
+VALUES (11,'the lumpy frogs')
+
+INSERT INTO LEAGUE (position,team)
+VALUES (12,'the swift buffalo')
+
+INSERT INTO LEAGUE (position,team)
+VALUES (13,'the big chargers')
+
+INSERT INTO LEAGUE (position,team)
+VALUES (14,'the rough robins')
+
+INSERT INTO LEAGUE (position,team)
+VALUES (15,'the silver crocs')
+
+SELECT 'Podium: ' || team
+FROM LEAGUE
+WHERE position BETWEEN 1 AND 3
+
+UNION ALL
+
+SELECT 'Demoted: ' || team
+FROM LEAGUE
+WHERE position >= (SELECT MAX(position) FROM LEAGUE) - 1;
