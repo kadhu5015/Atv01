@@ -1,0 +1,75 @@
+/*O setor de vendas precisa de um relatório para saber quais produtos estão sobrando em estoque.
+
+Para você ajudar o setor de vendas, exiba o nome do produto e o nome da categoria, para os produtos cuja quantidade seja maior que 100 e o código da categoria seja 1,2,3,6 ou 9. Mostre essas informações em ordem crescente pelo código da categoria.*/
+
+CREATE TABLE PRODUCTSQ21 (
+	
+	id NUMERIC,
+	PRIMARY KEY (id),
+	name CHARACTER VARYING (255),
+	amount NUMERIC,
+	price NUMERIC,
+	id_categories NUMERIC,
+	FOREIGN KEY (id_categories) REFERENCES CATEGORIESQ21 (id)
+
+);
+
+CREATE TABLE CATEGORIESQ21 (
+
+	id NUMERIC,
+	PRIMARY KEY (id),
+	name CHARACTER VARYING (255)
+
+);
+
+INSERT INTO CATEGORIESQ21 (id,name)
+VALUES (1,'superior')
+
+INSERT INTO CATEGORIESQ21 (id,name)
+VALUES (2,'super luxury')
+
+INSERT INTO CATEGORIESQ21 (id,name)
+VALUES (3,'modern')
+
+INSERT INTO CATEGORIESQ21 (id,name)
+VALUES (4,'nerd')
+
+INSERT INTO CATEGORIESQ21 (id,name)
+VALUES (5,'infantile')
+
+INSERT INTO CATEGORIESQ21 (id,name)
+VALUES (6,'robust')
+
+INSERT INTO CATEGORIESQ21 (id,name)
+VALUES (9,'wood')
+
+INSERT INTO PRODUCTSQ21 (id,name,amount,price,id_categories)
+VALUES(1,'blue chair',30,300,9)
+
+INSERT INTO PRODUCTSQ21 (id,name,amount,price,id_categories)
+VALUES(2,'red chair',200,2150,2)
+
+INSERT INTO PRODUCTSQ21 (id,name,amount,price,id_categories)
+VALUES(3,'disney wardrobe',400,829.5,4)
+
+INSERT INTO PRODUCTSQ21 (id,name,amount,price,id_categories)
+VALUES(4,'blue toaster',20,9.9,3)
+
+INSERT INTO PRODUCTSQ21 (id,name,amount,price,id_categories)
+VALUES(5,'solar panel',30,3000.25,4)
+
+/*
+SELECT p.name,c.name FROM PRODUCTSQ21 p
+JOIN CATEGORIESQ21 c ON c.id = p.id_categories
+WHERE p.amount > 100 AND p.id_categories = 1 
+OR p.id_categories = 2
+OR p.id_categories = 3
+OR p.id_categories = 6
+OR p.id_categories = 9
+ORDER BY p.id_categories ASC*/
+
+SELECT P.name AS "Nome do Produto", C.name AS "Nome da Categoria"
+FROM PRODUCTSQ21 P
+JOIN CATEGORIESQ21 C ON P.id_categories = C.id
+WHERE P.amount > 100 AND P.id_categories IN (1, 2, 3, 6, 9)
+ORDER BY P.id_categories ASC;
