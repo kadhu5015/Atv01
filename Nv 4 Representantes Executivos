@@ -1,0 +1,123 @@
+/*O setor financeiro precisa de um 
+relatório sobre os fornecedores dos 
+produtos que vendemos. Os relatórios 
+contemplam todas as categorias, mas 
+por algum motivo, os fornecedores dos 
+produtos cuja categoria é a executiva, 
+não estão no relatório.
+
+Seu trabalho é retornar os nomes dos 
+produtos e dos fornecedores cujo código da 
+categoria é 6.*/
+
+
+CREATE TABLE PROVIDERSQ19 (
+
+	id NUMERIC,
+	PRIMARY KEY (id),
+	name VARCHAR (255),
+	street VARCHAR (255),
+	city VARCHAR (255),
+	state CHAR (2)
+	
+);
+
+DROP TABLE PROVIDERSQ19
+
+CREATE TABLE CATEGORIESQ19(
+
+	id NUMERIC,
+	PRIMARY KEY (id),
+	name VARCHAR (255)
+
+);
+
+CREATE TABLE PRODUCTSQ19 (
+	id NUMERIC,
+	PRIMARY KEY (id),
+	name VARCHAR (255),
+	amount NUMERIC,
+	price NUMERIC, 
+	id_providers NUMERIC,
+	FOREIGN KEY (id_providers) REFERENCES PROVIDERSQ19 (id),
+	id_categories NUMERIC,
+	FOREIGN KEY (id_categories) REFERENCES CATEGORIESQ19(id)
+);
+
+DROP TABLE PRODUCTSQ19
+
+
+INSERT INTO CATEGORIESQ19 (id,name)
+VALUES(1,'Old stock')
+
+INSERT INTO CATEGORIESQ19 (id,name)
+VALUES(2,'new stock')
+
+INSERT INTO CATEGORIESQ19 (id,name)
+VALUES(3,'modern')
+
+INSERT INTO CATEGORIESQ19 (id,name)
+VALUES(4,'commercial')
+
+INSERT INTO CATEGORIESQ19 (id,name)
+VALUES(5,'recyclable')
+
+INSERT INTO CATEGORIESQ19 (id,name)
+VALUES(6,'executive')
+
+INSERT INTO CATEGORIESQ19 (id,name)
+VALUES(7,'superior')
+
+INSERT INTO CATEGORIESQ19 (id,name)
+VALUES(8,'wood')
+
+INSERT INTO CATEGORIESQ19 (id,name)
+VALUES(9,'super luxury')
+
+INSERT INTO CATEGORIESQ19 (id,name)
+VALUES(10,'vintage')
+
+INSERT INTO PROVIDERSQ19(id,name,street,city,state)
+VALUES(1,'Henrique','Av Brasil','Rio de Janeiro','RJ')
+
+INSERT INTO PROVIDERSQ19(id,name,street,city,state)
+VALUES(2,'Marcelo Augusto','Rua Imigrantes','Belo Horizonte','MG')
+
+INSERT INTO PROVIDERSQ19(id,name,street,city,state)
+VALUES(3,'Carolina Silva','Av São Paulo','Salvador','BA')
+
+INSERT INTO PROVIDERSQ19(id,name,street,city,state)
+VALUES(4,'Guilerme Staff','Rua Central','Porto Alegre','RS')
+
+INSERT INTO PROVIDERSQ19(id,name,street,city,state)
+VALUES(5,'Isabela Moraes','Av Juiz Grande','Curitiba','PR')
+
+INSERT INTO PROVIDERSQ19(id,name,street,city,state)
+VALUES(6,'Francisco Accerr','Av Paulista','São Paulo','SP')
+
+INSERT INTO PRODUCTSQ19(id,name,amount,price,id_providers,id_categories)
+VALUES (1,'two-door wardrobe',100,800,6,8)
+
+INSERT INTO PRODUCTSQ19(id,name,amount,price,id_providers,id_categories)
+VALUES (2,'dining table',1000,560,1,9)
+
+INSERT INTO PRODUCTSQ19(id,name,amount,price,id_providers,id_categories)
+VALUES (3,'towel holder',10000,25.5,5,1)
+
+INSERT INTO PRODUCTSQ19(id,name,amount,price,id_providers,id_categories)
+VALUES (4,'Computer desk',350,320.5,4,6)
+
+INSERT INTO PRODUCTSQ19(id,name,amount,price,id_providers,id_categories)
+VALUES (5,'chair',3000,210.64,3,6)
+
+INSERT INTO PRODUCTSQ19(id,name,amount,price,id_providers,id_categories)
+VALUES (6,'single bed',750,460,1,2)
+
+INSERT INTO PRODUCTSQ19(id,name,amount,price,id_providers,id_categories)
+VALUES (8,'TESTANDOH',750,460,1,6)
+
+
+SELECT p.name, pv.name FROM PRODUCTSQ19 p
+JOIN PROVIDERSQ19 pv ON p.id_providers = pv.id
+WHERE p.id_categories = 6;
+
