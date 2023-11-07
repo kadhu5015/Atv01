@@ -1,0 +1,72 @@
+/*
+A vídeo locadora está fazendo seu relatório semestral e precisa da sua ajuda. Basta você selecionar o nome dos clientes e a data de locação, das locações realizadas no mês de setembro de 2016.
+
+*/
+
+CREATE TABLE CUSTOMERSQ28(
+	
+	id NUMERIC,
+	PRIMARY KEY (id),
+	name VARCHAR (255),
+	street VARCHAR (255),
+	city VARCHAR 
+
+);
+
+CREATE TABLE RENTALS (
+	
+	id NUMERIC,
+	PRIMARY KEY (id),
+	rentals_date DATE,
+	id_customers NUMERIC,
+	FOREIGN KEY (id_customers) REFERENCES CUSTOMERSQ28 (id)
+
+);
+
+INSERT INTO CUSTOMERSQ28(id,name,street,city)
+VALUES(1,'giovanna golcalves oliveira','rua mato grosso','canoas')
+
+INSERT INTO CUSTOMERSQ28(id,name,street,city)
+VALUES(2,'kaua azevedo ribeiro','travessa ibiá','uberlândia')
+
+INSERT INTO CUSTOMERSQ28(id,name,street,city)
+VALUES(3,'rebeca barbosa santos','rua observatorio meteorologico','salvador')
+
+INSERT INTO CUSTOMERSQ28(id,name,street,city)
+VALUES(4,'sarah carvalho correia','rua antonio carlos da silva','apucarana')
+
+INSERT INTO CUSTOMERSQ28(id,name,street,city)
+VALUES(5,'joao almeida lima','rua rio taiuva','ponta grossa')
+
+INSERT INTO CUSTOMERSQ28(id,name,street,city)
+VALUES(6,'diogo medo dias','rua duzentos e cinquenta','varzea grande')
+
+INSERT INTO RENTALS (id, rentals_date,id_customers)
+VALUES (1,'2016-09-10',3)
+
+INSERT INTO RENTALS (id, rentals_date,id_customers)
+VALUES (2,'2016-02-09',1)
+
+INSERT INTO RENTALS (id, rentals_date,id_customers)
+VALUES (3,'2016-02-08',4)
+
+INSERT INTO RENTALS (id, rentals_date,id_customers)
+VALUES (4,'2016-02-09',2)
+
+INSERT INTO RENTALS (id, rentals_date,id_customers)
+VALUES (5,'2016-02-03',6)
+
+INSERT INTO RENTALS (id, rentals_date,id_customers)
+VALUES (6,'2016-04-04',4)
+
+SELECT C.name, R.rentals_date
+FROM CUSTOMERSQ28 C
+INNER JOIN RENTALS R ON C.id = R.id_customers
+WHERE EXTRACT(MONTH FROM R.rentals_date) = 9 AND EXTRACT(YEAR FROM R.rentals_date) = 2016;
+
+
+
+/*
+SELECT c.name FROM CUSTOMERSQ28 c
+JOIN RENTALS r ON r.rentals_date > '2016-09-01' AND r.rentals_date < '2016-10-01'
+*/
