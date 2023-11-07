@@ -1,0 +1,63 @@
+/*
+Uma Vídeo locadora contratou 
+seus serviços para catalogar os 
+filmes dela. Eles precisam que você 
+selecione o código e o nome dos filmes cuja 
+descrição do gênero seja 'Action'.
+
+*/
+
+CREATE TABLE GENRES (
+
+	id NUMERIC,
+	PRIMARY KEY  (id),
+	description VARCHAR (255)
+
+);
+
+CREATE TABLE MOVIESQ20 (
+	
+	id NUMERIC,
+	PRIMARY KEY (id),
+	name VARCHAR (255),
+	id_genres NUMERIC,
+	FOREIGN KEY (id_genres) REFERENCES GENRES (id)
+	
+);
+
+INSERT INTO GENRES (id,description)
+VALUES (1,'animation')
+
+INSERT INTO GENRES (id,description)
+VALUES (2,'Horror')
+
+INSERT INTO GENRES (id,description)
+VALUES (3,'action')
+
+INSERT INTO GENRES (id,description)
+VALUES (4,'drama')
+
+INSERT INTO GENRES (id,description)
+VALUES (5,'comedy')
+
+INSERT INTO MOVIESQ20 (id,name,id_genres)
+VALUES (1,'batman',3)
+
+INSERT INTO MOVIESQ20 (id,name,id_genres)
+VALUES (2,'the battle of the dark river',3)
+
+INSERT INTO MOVIESQ20 (id,name,id_genres)
+VALUES (3,'white duck',1)
+
+INSERT INTO MOVIESQ20 (id,name,id_genres)
+VALUES (4,'breaking barriers',4)
+
+INSERT INTO MOVIESQ20 (id,name,id_genres)
+VALUES (5,'the two hours',2)
+
+SELECT m.id, m.name FROM MOVIESQ20 m
+JOIN GENRES g ON g.id = m.id_genres
+WHERE g.description = 'action';
+
+
+
