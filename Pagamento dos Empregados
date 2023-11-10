@@ -1,0 +1,69 @@
+CREATE TABLE DEPARTAMENTOPAG (
+
+	cod_dep INTEGER,
+	PRIMARY KEY (cod_dep),
+	nome VARCHAR (50),
+	endereco VARCHAR (50)
+
+);
+
+CREATE TABLE DEPENDENTE (
+
+	matr INTEGER,
+	PRIMARY KEY (matr),
+	nome VARCHAR (50),
+	endereco VARCHAR (50)
+);
+
+CREATE TABLE DESCONTO (
+
+	cod_desc INTEGER,
+	PRIMARY KEY (cod_desc),
+	nome VARCHAR (50),
+	tipo VARCHAR (10),
+	valor NUMERIC
+
+);
+
+CREATE TABLE DIVISAO (
+
+	cod_divisao INTEGER,
+	PRIMARY KEY (cod_divisao),
+	nome VARCHAR (50),
+	endereco VARCHAR (50),
+	cod_depart INTEGER,
+	FOREIGN KEY (cod_depart) REFERENCES DEPARTAMENTOPAG (cod_dep)
+
+);
+
+CREATE TABLE EMP_DESC (
+
+	cod_desc INTEGER,
+	matr INTEGER,
+	FOREIGN KEY (matr) REFERENCES DEPENDENTE (matr)
+
+);
+
+CREATE TABLE EMP_VENC (
+
+	cod_venc INTEGER,
+	PRIMARY KEY (cod_venc),
+	matr INTEGER,
+	FOREIGN KEY (matr) REFERENCES DEPENDENTE (matr)
+);
+
+--falta executar o debaixo:
+
+CREATE TABLE EMPREGADO (
+	
+	matr INTEGER,
+	PRIMARY KEY (matr),
+	nome VARCHAR (50),
+	endereco VARCHAR (50),
+	data_locacao TIMESTAMP,
+	lotacao INTEGER,
+	gerencia_cod_dep INTEGER,
+	lotacao_div INTEGER,
+	gerencia_div INTEGER
+
+);
